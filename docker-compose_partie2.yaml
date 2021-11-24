@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  nginx: 
+    image: jwilder/nginx-proxy 
+  
+  nginx1: 
+    image: nginx:latest
+  
+  nginx2:
+    image: mysql
+  
+  nginx3:
+    image: nginx
+
+  nginx4:
+    image: nginx

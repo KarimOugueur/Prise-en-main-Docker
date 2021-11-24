@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  kong:
+    image: kong:latest
+    volumes:
+      - ./kong.yml:/usr/local/kong/declarative/kong.yml
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/usr/local/kong/declarative/kong.yml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+    ports:
+      - "8080:8000"
+      - "8443:8443"
+      - "127.0.0.1:8001:8001"
+      - "127.0.0.1:8444:8444"
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=tlc
+      - MYSQL_USER=tlc
+      - MYSQL_PASSWORD=tlc
+  etherpad:
+    image: etherpad/etherpad:stable
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
+  mail:
+    image: bytemark/smtp
+    restart: always
+    ports:
+      - "2525:25"
