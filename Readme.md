@@ -2,8 +2,8 @@
 
 # Karim OUGUEUR
 
-[Topic](https://github.com/barais/TPDockerSampleApp)
+### [Topic](https://github.com/barais/TPDockerSampleApp)
 
-Step 1 : docker-compose_partie2.yaml
-Step 2 : Dockerfile
-Step 3 : dokcer-compose.yaml
+#### Step 1 : docker-compose_partie2.yaml
+#### Step 2 : Dockerfile
+#### Step 3 : dokcer-compose.yaml
